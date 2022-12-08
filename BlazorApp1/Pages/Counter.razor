@@ -96,13 +96,14 @@
 
         protected override void OnInitialized()
         {
+            arobj.authorid = 0;
             arlist = Service.GetAllMtr();
         }
 
         void TambahRec()
         {
             var updateatrdetails = false;
-            if (arobj.authorid == 0)
+            if (edit)
             {
                 updateatrdetails = Service.UpdateeRec(arobj);
                 popup = false;
@@ -111,6 +112,7 @@
             {
                 Service.TambahRec(arobj);
             }
+            edit = false;
             arobj = new AtrClass();
             //Service.InsertRec(mcobj);
             arlist = Service.GetAllMtr();
@@ -120,6 +122,7 @@
         {
             arobj = Service.UbahRec(aredit.authorid);
             popup = true;
+            edit = true;
         }
 
         void delatr(AtrClass ardel)
