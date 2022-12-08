@@ -24,6 +24,10 @@ namespace BlazorApp1.Services
 
         public bool InsertRec(MtrClass ecadd)
         {
+            if(ecadd.authorid == 0)
+            {
+                return false;
+            }
             _dbcontext.mtrtable.Add(ecadd);
             _dbcontext.SaveChanges();
             return true;

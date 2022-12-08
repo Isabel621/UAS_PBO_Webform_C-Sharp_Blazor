@@ -14,5 +14,7 @@ namespace BlazorApp1.Data
         }
 
         public DbSet<MtrClass> mtrtable { get; set; }   
+
+        public DbSet<AtrClass> author { get; set; }
     }
 }

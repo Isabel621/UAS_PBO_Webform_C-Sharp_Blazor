@@ -2,14 +2,14 @@
 
 @using BlazorApp1.Data
 @using BlazorApp1.Services
+@inject AtrService ats
 @inherits OwningComponentBase<MtrService>
-
 
 <div style="text-align:center;">
     <h3>Dasboard Admin Panel</h3>
     <hr/>
     <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Add Record
+        Tambahkan Data
     </button>
         <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -22,6 +22,17 @@
                     </div>
                     <EditForm Model="mcobj" OnValidSubmit="InsertRec">
                     <div class="modal-body">
+                        <div class="form-group row mb-3">
+                            <label for="penjelasan" class="col-sm-2 col-form-label">Author</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="authorid" @bind="mcobj.authorid">
+                                    <option value=0 selected>[Pilih Author]</option>
+                                    @foreach (var author in atlist){
+                                        <option value="@author.authorid">@author.nama</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
                         <div class="form-group row mb-3">
                             <label for="kelas" class="col-sm-2 col-form-label">Kelas</label>
                             <div class="col-sm-10">
@@ -79,6 +90,7 @@
 
     </table>
     @code{
+        List<AtrClass> atlist;
         List<MtrClass> mclist;
         MtrClass mcobj = new MtrClass();
 
@@ -100,6 +112,7 @@
         protected override void OnInitialized()
         {
             mclist = Service.GetAllMtr();
+            atlist = ats.GetAllMtr();
         }
 
         void InsertRec()

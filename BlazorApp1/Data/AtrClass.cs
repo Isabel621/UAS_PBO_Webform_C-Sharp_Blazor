@@ -8,19 +8,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BlazorApp1.Data
 {
-    [Table("mtrtable", Schema = "public")]
-    public class MtrClass
+    [Table("author", Schema = "public")]
+    public class AtrClass
     {
         [Key]
 
-        public int kontenid { get; set; }   
-
-        public string kelas { get; set; }
-
         public int authorid { get; set; }
 
-        public string materi { get; set; }
+        public string nama { get; set; }
 
-        public string penjelasan { get; set; }  
+        public string email { get; set; }
+
     }
 }

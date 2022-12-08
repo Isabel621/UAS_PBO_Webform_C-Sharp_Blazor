@@ -14,6 +14,7 @@ builder.Services.AddSingleton<WeatherForecastService>();
 //builder.Services.AddScoped(MtrService);
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("MyConnection")));
 builder.Services.AddScoped<MtrService>();
+builder.Services.AddScoped<AtrService>();
 
 var app = builder.Build();
 
